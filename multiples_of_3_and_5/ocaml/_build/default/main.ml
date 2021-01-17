@@ -1,4 +1,3 @@
-open Format
 let sum_multiples a =
     let sum = ref 0 in
     for i = 0 to (a - 1) do
@@ -6,5 +5,6 @@ let sum_multiples a =
     done;
     !sum;;
 
-printf ("Sum of the multiples of 3 and 5 from 0 to 10: %d\n") (sum_multiples 10);;
-printf ("Sum of the multiples of 3 and 5 from 0 to 1000: %d\n") (sum_multiples 1000);;
+print_string "What limit? "
+let a = read_int ();;
+Printf.printf ("Sum of the multiples of 3 and 5 from 0 to %d: %d\n") a (sum_multiples a);;

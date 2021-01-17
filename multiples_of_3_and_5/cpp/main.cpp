@@ -11,8 +11,9 @@ int multiple_sum(int limit) {
 }
 
 int main() {
-  cout << "Sum of multiples of 3 and 5 from 0 to 10: " << multiple_sum(10)
-       << endl;
-  cout << "Sum of multiples of 3 and 5 from 0 to 1000: " << multiple_sum(1000)
-       << endl;
+  int a;
+  cout << "What limit? ";
+  cin >> a;
+  cout << "Sum of multiples of 3 and 5 from 0 to " << a << ": "
+       << multiple_sum(a) << endl;
 }
