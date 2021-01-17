@@ -1,26 +1,24 @@
 #include <iostream>
 using namespace std;
 
-int fib(int n)
-{
-    // Returns the nth number of the Fibonacci sequence
-    if (n <= 1) return n;
-    else return fib(n-1) + fib(n-2);
-}
-
 int even_fib(int n)
 {
-    // Returns the sum of all the even numbers in the
-    // nth first values of the Fibonacci sequence
+    int* fib = new int[n];
+    fib[0] = 0, fib[1] = 1;
     int sum = 0;
-    for (int i = 0; i <= n; i++)
+    for (int i=2; i<n; i++)
     {
-        if (fib(i) % 2 == 0) sum += fib(i);
+        fib[i] = fib[i-1] + fib[i-2];
+        sum += (fib[i] % 2 == 0) ? fib[i] : 0;
     }
+    delete [] fib;
     return sum;
 }
 
 int main()
 {
-    cout << even_fib(10) << endl;
+    cout << "What limit? ";
+    int a;
+    cin >> a;
+    cout << "Sum of all even values of the Fibonacci sequence up to " << a << ": " << even_fib(a) << endl;
 }
