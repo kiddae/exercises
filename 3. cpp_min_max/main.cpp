@@ -1,26 +1,29 @@
 #include <iostream>
 #include <climits>
 using std::cout;
+using std::cin;
 using std::endl;
 
 int main()
 {
-    int tab[10] = {3,2,6,4,7,3,2,5,4,2};
+    const int TABLEN = 10;
+    int tab[TABLEN];
+    cout << "Insert " << TABLEN << " elements:" << endl;
+    for (int i=0; i<TABLEN; i++) cin >> tab[i];
+
     int maximum = -INT_MAX;
     int minimum = INT_MAX;
 
     // USING ARRAY ELEMENTS
-    /* for (int i=0; i<10; i++)
+    /* for (int i=0; i<TABLEN; i++)
     {
-        cout << "Elements: " << tab[i] << endl;
         maximum = (tab[i] > maximum) ? tab[i] : maximum;
         minimum = (tab[i] < minimum) ? tab[i] : minimum;
     }*/
 
     // USING POINTER PROPERTIES 
-    for (int i=0; i<10; i++)
+    for (int i=0; i<TABLEN; i++)
     {
-        cout << "Elements: " << *(tab+i) << endl;
         maximum = (*(tab+i) > maximum) ? *(tab+i) : maximum;
         minimum = (*(tab+i) < minimum) ? *(tab+i) : minimum;
     }
