@@ -1,5 +1,7 @@
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 int multiple_sum(int limit) {
   int sum = 0;
