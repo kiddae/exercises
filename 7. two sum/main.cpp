@@ -30,17 +30,18 @@
 /*      Only one valid answer exists. */
 
 #include <iostream>
+#include <map>
 #include <vector>
 
 using namespace std;
 
 vector<int> twoSum(vector<int> nums, int target) {
+  map<int, int> d;
   for (int a = 0; a < nums.size(); a++) {
     int b = target - nums[a];
-    for (int i = 0; i < nums.size(); i++) {
-      if (i != a && b == nums[i])
-        return (vector<int>{a, i});
-    }
+    if (d.find(b) != d.end())
+      return (vector<int>{a, d[b]});
+    d[nums[a]] = a;
   }
   return (vector<int>{0, 0}); // Default output because the compiler gets mad
 }

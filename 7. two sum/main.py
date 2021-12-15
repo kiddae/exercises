@@ -30,10 +30,12 @@
 #     Only one valid answer exists.
 
 def twoSum(nums: list[int], target: int) -> list[int]:
+    d = {}
     for a in range(len(nums)):
         b = target - nums[a]
-        if b in nums[:a]+nums[a+1:]:
-            return [a, nums.index(b, a+1)]
+        if b in d:
+            return [a, d[b]]
+        d[nums[a]] = a
 
 
 print(twoSum([2, 7, 11, 15], 9))
