@@ -57,6 +57,34 @@ std::vector<int> bfs(std::vector<Fil> fils, int a, int b) {
   return chemin;
 }
 
+std::vector<int> search(std::vector<Fil> Fils, int a, int b) {
+  std::vector<int> explored;
+  std::map<int, int> parents;
+  std::deque<int> q;
+  explored.push_back(a);
+  q.push_back(a);
+  while (!q.empty()) {
+    int v = q.back();
+    q.pop_back();
+    if (v == b)
+      break;
+    for (auto i : puces_adj(Fils, v)) {
+      if (std::find(explored.begin(), explored.end(), i) == explored.end()) {
+        explored.push_back(i);
+        q.push_back(i);
+        parents[i] = v;
+      }
+    }
+  }
+  std::vector<int> chemin = {b};
+  int i = b;
+  while (i != a) {
+    chemin.push_back(parents[i]);
+    i = parents[i];
+  }
+  return chemin;
+}
+
 void calcul_signaux(int n, int m, int r, const std::vector<int> &signaux,
                     const std::vector<Fil> &fils,
                     const std::vector<Question> &questions) {
